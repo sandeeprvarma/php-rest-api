@@ -5,13 +5,13 @@
  * Performs CRUD operation on products 
  * @author sandeep varma
  */
-class Products extends AnotherClass
+class Products
 {
 	
 	private $product;
 	public function __construct()
 	{
-		$this->product = new ProductsModel;
+		$this->product = new ProductModel;
 	}
 
 	/**
@@ -22,5 +22,10 @@ class Products extends AnotherClass
 	public function getAllProducts()
 	{
 		$products = $this->product->getAll();
+		if($products) {
+			Response::json(200,$products);
+		}else {
+			Response::errorLog(403,"Unable to get the product details.");
+		}
 	}
 }

@@ -6,18 +6,38 @@
 class ProductModel
 {
 	private $DB;
-	private function __construct()
+	private $table = 'product';
+
+	public function __construct()
 	{
-		$this->db = DB::getDBInstance();
+		$this->DB = DB::getDBInstance();
 	}
 
-	private function __destruct()
+	/**
+	* Destructor
+	* close database connection as soon as the ProductModel object is destroyed
+	*/
+	public function __destruct()
 	{
-		$this->db->closeDB();
+		DB::closeDB();
 	}
 
+	/*
+	* getAll
+	* Return all product details
+	* @return object 
+	*/
 	public function getAll()
 	{
-			
+		$query = "select product_id,name,description,price from $this->table";
+		if ($stmt = $this->DB->prepare($query)) {
+			$stmt->execute();
+			$stmt->bind_result($id, $name, $desc, $price);
+			while ($stmt->fetch()) {
+				$data[$id] = array($id, $name, $desc, $price);
+			}
+			return $data;
+		}
+		return false;
 	}
 }

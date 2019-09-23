@@ -11,19 +11,22 @@ class Autoload
 	{
 		$classname 	= strtolower( trim($classname) );
 		$file 		= 'core'.DS.$classname.'.php';
-		require_once($file);
+		if(is_readable($file))
+			require_once($file);
 	}
 	public static function loadModel($classname)
 	{
 		$classname 	= strtolower( trim($classname) );
 		$file 		= 'model'.DS.$classname.'.php';
-		require_once($file);
+		if(is_readable($file))
+			require_once($file);
 	}
 	public static function loadController($classname)
 	{
 		$classname 	= strtolower( trim($classname) );
 		$file 		= 'controller'.DS.$classname.'.php';
-		require_once($file);
+		if(is_readable($file))
+			require_once($file);
 	}
 }
 

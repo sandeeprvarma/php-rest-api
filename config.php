@@ -2,7 +2,7 @@
 /*
 * Database connection details
 */
-define(DB, array(
+define('DB', array(
 	'SERVER' => 'localhost',
 	'USER' => 'root',
 	'PASSWORD' => 'password',
@@ -10,4 +10,4 @@ define(DB, array(
 	'PORT' => 3306,
 ));
 
-define(DS, DIRECTORY_SEPARATOR);
+define('DS', DIRECTORY_SEPARATOR);

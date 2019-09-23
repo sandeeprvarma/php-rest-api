@@ -15,7 +15,7 @@ class DB
 	*/
 	public static function getDBInstance()
 	{
-		self::$DB = mysqli_connect(DB['SERVER'],DB['USER'],DB['PASSWORD'],DB['DATABASE'],DB['PORT']) or die("Connection failed: ".mysqli_connect_error());
+		self::$DB = new mysqli(DB['SERVER'],DB['USER'],DB['PASSWORD'],DB['DATABASE'],DB['PORT']) or die("Connection failed: ".self::$DB->connect_error);
 		return self::$DB;
 	}
 
