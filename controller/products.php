@@ -23,9 +23,9 @@ class Products
 	{
 		$products = $this->product->getAll();
 		if($products) {
-			Response::json(200,$products);
+			Response::json(200,'success',$products);
 		}else {
-			Response::errorLog(403,"Unable to get the product details.");
+			Response::json(403,'failed',$products);
 		}
 	}
 }
